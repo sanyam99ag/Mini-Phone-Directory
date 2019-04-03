@@ -14,7 +14,7 @@
         crossorigin="anonymous"></script>
 
 
-    <title>Directory</title>
+    <title>Phone Directory</title>
     <style>
         input {
 	font-size: 18px;
@@ -42,67 +42,27 @@ input:focus{
 </head>
 
 <body>
-    <button type="button" class="btn btn-secondary btn-lg btn-block">ADD NEW</button>
-    <input class="name show" type="text" placeholder="Add New Name">
-    <input class="number hide" type="number" placeholder="Add New Number">
+    <button type="button" class="btn btn-secondary btn-lg btn-block">ADD NEW SUBSCRIBER</button>
+    <div style="text-align: center">
+        <input class="name show" type="text" placeholder="Add New Name">
+        <input class="number hide" type="number" placeholder="Add New Number" maxlength="10">
+    </div>
 
     <br>
     <br>
+    <h3 class="mb-2" style="text-align:center">    MINI PHONE DIRECTORY    </h3>
     <table class="table table-striped ">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Contact No.</th>
-                <th></th>
+                <th scope="col">Delete</th>
             </tr>
         </thead>
         <tbody class="table">
-            <tr>
-                <td>sanyam</td>
-                <td>123456789</td>
-                <td><span><i class="fas fa-trash-alt"></i></span></td>
-            </tr>
-            <tr>
-                <td>Thornton</td>
-                <td>123456789</td>
-                <td><span><i class="fas fa-trash-alt"></i></span></td>
-
-            </tr>
-            <tr>
-                <td>Bird</td>
-                <td>123456789</td>
-                <td><span><i class="fas fa-trash-alt"></i></span></td>
-
-            </tr>
+           
         </tbody>
     </table>
-
-    <!-- <div class="small-container">
-            <h1>New Tab App</h1>
-        
-            <form>
-              <input id="item" type="text" placeholder="New">
-              <input id="item" type="number" placeholder="New">
-            </form>
-        
-            <h2>Items</h2>
-            <ul></ul>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>
-                            
-                        </td>
-                        <td>
-
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        
-            <button>Clear All</button>
-          </div> -->
-        
     <script type="text/javascript" src="directory.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

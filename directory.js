@@ -1,28 +1,14 @@
-// const form = document.querySelector('form');
-// const tbody = document.querySelector('tbody');
-// const button = document.querySelector('button');
-// const input1 = document.getElementsByClassName('name');
-// const input2 = document.getElementsByClassName('number');
+
 if(typeof jQuery!=='undefined'){
     console.log('jQuery Loaded');
 }
 else{
     console.log('not loaded yet');
 }
-// var nam = document.getElementsByClassName("name");
-// var num = document.getElementsByClassName("number");
-// .classList.add("mystyle");
-
-// $("button").click(function(){
-// 	$("input[type='text']").slideToggle();
-// 	// $("input[type='number']").fadeToggle();
-// });
 
 $("input[type='text']").keypress(function(event){
 	if(event.which === 13){
 		var name = $(this).val();
-        // $(".name").classList.add("hide")
-        // $(".number").classList.remove("hide");
         $("input[type='name']").css("visibility", "none");
 
         $("input[type='number']").css("visibility", "visible");
@@ -39,7 +25,7 @@ $("input[type='text']").keypress(function(event){
                     }
                 });
                         $("input[type='number']").css("visibility", "none");
-                        // $(this).val("");
+                        
         
 	}
 });
