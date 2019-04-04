@@ -23,34 +23,37 @@
 	padding: 13px 13px 13px 20px;
 	box-sizing: border-box;
 	border: 2x solid #2980b9;
-}
-
-input:focus{
-	background: #fff;
-	border: 3px solid #2980b9;
-	outline: none;
-}
-    .hide{
-        visibility: hidden;
     }
 
-    .show{
-        visibility: visible;
+    input:focus{
+        background: #fff;
+        border: 3px solid #2980b9;
+        outline: none;
+    }
+    .fas{
+        color: rgb(153, 21, 21);
     }
 
     </style>
 </head>
 
-<body>
-    <button type="button" class="btn btn-secondary btn-lg btn-block">ADD NEW SUBSCRIBER</button>
-    <div style="text-align: center">
-        <input class="name show" type="text" placeholder="Add New Name">
-        <input class="number hide" type="number" placeholder="Add New Number" maxlength="10">
-    </div>
+<body onload="init()">
+    <button  class="btn btn-default btn-lg btn-block " style="background:#343A40; color:white">ADD NEW SUBSCRIBER</button>
+    <div class="row"style="justify-content: center;">
+        <input class="name" type="text" placeholder="Add New Name" onkeyUp="document.getElementById('nam').innerHTML = this.value">
+        <input class="number " type="number" placeholder="Add New Number" maxlength="10" onkeyUp="document.getElementById('num').innerHTML = this.value">
+        <button  type="button" class="addnew row btn btn-secondary btn-lg ">ADD NEW SUBSCRIBER</button>
 
+    </div>
+    <div>
+       <span style="font-weight:bold"> Name: </span><span id ="nam">  </span><br>
+        <span style="font-weight:bold"> Number: </span><span id="num">  </span>
+    </div>   
     <br>
     <br>
-    <h3 class="mb-2" style="text-align:center">    MINI PHONE DIRECTORY    </h3>
+    <div>
+    <h3 class="mb-2" style="text-align:center">    MINI PHONE DIRECTORY   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button  type="button" class="btn btn-secondary btn-sm" onclick="deleteall()" >DELETE PHONEBOOK</button> </h3>
+    </div>
     <table class="table table-striped ">
         <thead class="thead-dark">
             <tr>

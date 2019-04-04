@@ -1,78 +1,65 @@
 
-if(typeof jQuery!=='undefined'){
+if (typeof jQuery !== 'undefined') {
     console.log('jQuery Loaded');
 }
-else{
+else {
     console.log('not loaded yet');
 }
 
-$("input[type='text']").keypress(function(event){
-	if(event.which === 13){
-		var name = $(this).val();
-        $("input[type='name']").css("visibility", "none");
+console.log(localStorage)
 
-        $("input[type='number']").css("visibility", "visible");
+var directoryArray = [] ;
+function init() {
+    if (localStorage.minidirectory) {
+        directoryArray = JSON.parse(localStorage.minidirectory);
+        for(var i = 0; i< directoryArray.length; i++) {
+            $("tbody").append("<tr class='ab'><td>" + directoryArray[i].name + "</td><td>" + directoryArray[i].number + "</td><td><span><i class='fas fa-trash-alt'></i></span></td></tr>")
+        }
+    }
+}
 
-                $("input[type='number']").keypress(function(event){
-                    if(event.which === 13){
-                        var number = $(this).val();
-                        
-                        //create a new directory
-                        $("tbody").append("<tr class='ab'><td>" + name + "</td><td>" + number + "</td><td><span><i class='fas fa-trash-alt'></i></span></td></tr>")
-                        $(this).val("");
-                        $("input[type='text']").val("");
+$(document).ready(function () {
+    $(".addnew").click(function () {
+        var name = $("input[type='text']").val();
+        var number = $("input[type='number']").val();
+        if (number.length > 6 && number.length < 11) {
 
-                    }
-                });
-                        $("input[type='number']").css("visibility", "none");
-                        
+            var dirObj = {name: name, number: number}
+            directoryArray.push(dirObj);
         
-	}
+            localStorage.minidirectory = JSON.stringify(directoryArray);
+
+            $("tbody").append("<tr class='ab'><td>" + name + "</td><td>" + number + "</td><td><button  class='btn btn-default btn-sm' onclick='deletedir()'><span class='lo'><i class='fas fa-trash-alt'></i></span></button></td></tr>")
+            $("input[type='number']").val("");
+            $("input[type='text']").val("");
+            return true;
+        } else {
+            alert('Please Enter Valid Number')
+        }
+
+    });
 });
 
 
 //Click on X to delete Todo
-$("tbody").on("click", "span", function(event){
-	// $(this).parents().fadeOut(500,function(){
-		$(this).parentsUntil(".table").remove();
-	// });
+$("tbody").on("click", "span", function (event) {
+    $(this).parentsUntil(".table").remove();
     event.stopPropagation();
 });
 
-
-
-// let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
-
-// localStorage.setItem('items', JSON.stringify(itemsArray));
-// const data = JSON.parse(localStorage.getItem('items'));
-
-// const liMaker = (text, number) => {
-//   const td1 = document.createElement('td');
-//   const td2 = document.createElement('td');
-//   td1.textContent = text;
-//   td2.textContent = number;
-// //   tbody.appendChild("<tr class='ab'><td>" + td1 + "</td><td>" + td2 + "</td></tr>");
-//   $("tbody").append("<tr class='ab'><td>" + td1 + "</td><td>" + td2 + "</td></tr>")
+// // var bin = $(button)
+// function deletedir() {
+//     // var in = $(this).index;
+//     $("button[type='button']").parentsUntil(".table").remove();
+//     directoryArray.splice($(this).index,1);
+//     localStorage.minidirectory = JSON.stringify(directoryArray);
+//     init();
 // }
 
-// form.addEventListener('submit', function (e) {
-//   e.preventDefault();
-
-//   itemsArray.push(input1.value,input2.value );
-//   localStorage.setItem('items', JSON.stringify(itemsArray));
-//   liMaker(input1.value,input2.value );
-//   input1.value = "";
-//   input2.value = "";
-// });
-
-// data.forEach(item => {
-//   liMaker(item);
-// });
-
-// button.addEventListener('click', function () {
-//   localStorage.clear();
-//   while (ul.firstChild) {
-//     ul.removeChild(ul.firstChild);
-//   }
-//   itemsArray = [];
-// });
+function deleteall() {
+    localStorage.clear();
+    $(this).parentsUntil(".table").remove();
+    event.stopPropagation();
+    location.reload();
+    init();
+}
